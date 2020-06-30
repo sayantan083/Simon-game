@@ -15,7 +15,16 @@ $(document).keydown((event) => {
         generateSequence();
     }
 });
+$("body").click(()=>{
+    if (level === 0) {
+        $("body").removeClass("game-over");
+        level++;
 
+        $("h1").text("Level " + level);
+        //start the game
+        generateSequence();
+    }
+});
 function generateSequence() {
     //choose randomly from four colors
     var choose = Math.floor(Math.random() * 4);
