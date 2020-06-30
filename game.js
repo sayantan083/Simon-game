@@ -15,14 +15,12 @@ $(document).keydown((event) => {
         generateSequence();
     }
 });
-$("body").click(()=>{
+$("h1").click(()=>{
     if (level === 0) {
         
-        setTimeout(()=>{
             $("body").removeClass("game-over");
             level++;
             $("h1").text("Level " + level);
-        },5000);
         
         //start the game
         generateSequence();
