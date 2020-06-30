@@ -17,10 +17,13 @@ $(document).keydown((event) => {
 });
 $("body").click(()=>{
     if (level === 0) {
-        $("body").removeClass("game-over");
-        level++;
-
-        $("h1").text("Level " + level);
+        
+        setTimeout(()=>{
+            $("body").removeClass("game-over");
+            level++;
+            $("h1").text("Level " + level);
+        },5000);
+        
         //start the game
         generateSequence();
     }
