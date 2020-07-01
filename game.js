@@ -94,6 +94,7 @@ $(".blue").click(() => {
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
         level=0;
+        stateGreen = 0, stateRed = 0, stateYellow = 0, stateBlue = 0;
     }
 });
 
@@ -119,6 +120,7 @@ $(".red").click(() => {
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
         level=0;
+        stateGreen = 0, stateRed = 0, stateYellow = 0, stateBlue = 0;
     }
 });
 
@@ -144,6 +146,7 @@ $(".green").click(() => {
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
         level=0;
+        stateGreen = 0, stateRed = 0, stateYellow = 0, stateBlue = 0;
     }
 });
 
@@ -169,5 +172,6 @@ $(".yellow").click(() => {
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
         level=0;
+        stateGreen = 0, stateRed = 0, stateYellow = 0, stateBlue = 0;
     }
 });
