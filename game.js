@@ -1,14 +1,8 @@
-var buttons = [ "green","red", "blue", "yellow"];
+var buttons = ["blue", "red", "green", "yellow"];
 var level = 0;
 var sequence = [];
 var stateGreen = 0, stateRed = 0, stateYellow = 0, stateBlue = 0;
 var counter;
-var audioGreen=new Audio("sounds/green.mp3");
-var audioRed=new Audio("sounds/red.mp3");
-var audioBlue=new Audio("sounds/blue.mp3");
-var audioYellow=new Audio("sounds/yellow.mp3");
-var audioWrong=new Audio("sounds/wrong.mp3");
-var audios=[audioGreen,audioRed,audioBlue,audioYellow];
 $(document).keydown((event) => {
     //only if level is 0 then start a new game
     if (level === 0) {
@@ -23,15 +17,16 @@ $(document).keydown((event) => {
 });
 $("h1").click(()=>{
     if (level === 0) {
-        
+
             $("body").removeClass("game-over");
             level++;
             $("h1").text("Level " + level);
-        
+
         //start the game
         generateSequence();
     }
 });
+
 function generateSequence() {
     //choose randomly from four colors
     var choose = Math.floor(Math.random() * 4);
@@ -39,7 +34,8 @@ function generateSequence() {
 
     setTimeout(()=>{
         //play its sound
-    audios[choose].play();
+    var audio = new Audio("sounds/" + buttons[choose] + ".mp3");
+    audio.play();
 
     //animation
     $("." + buttons[choose]).addClass("pressed");
@@ -76,8 +72,9 @@ function getUserSequence(counter) {
 $(".blue").click(() => {
 
     //choose that the button is right or wrong in the sequence
-    if (stateBlue === 1) 
-        audioBlue.play();
+    if (stateBlue === 1) {
+        var audio = new Audio("sounds/blue.mp3");
+        audio.play();
         stateBlue = 0;
         
         // if its last of the sequence than start the next level 
@@ -91,7 +88,8 @@ $(".blue").click(() => {
             getUserSequence(++counter);
     }
     else {
-        audioWrong.play();
+        var audio = new Audio("sounds/wrong.mp3");
+        audio.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
@@ -103,7 +101,8 @@ $(".red").click(() => {
 
     //choose that the button is right or wrong in the sequence
     if (stateRed === 1) {
-        audioRed.play();
+        var audio = new Audio("sounds/red.mp3");
+        audio.play();
         stateRed = 0;
         if (counter == sequence.length - 1) {
             counter=0;
@@ -114,7 +113,8 @@ $(".red").click(() => {
             getUserSequence(++counter);
     }
     else {
-        audioWrong.play();
+        var audio = new Audio("sounds/wrong.mp3");
+        audio.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
@@ -126,7 +126,8 @@ $(".green").click(() => {
 
     //choose that the button is right or wrong in the sequence
     if (stateGreen === 1) {
-        audioGreen.play();
+        var audio = new Audio("sounds/green.mp3");
+        audio.play();
         stateGreen = 0;
         if (counter == sequence.length - 1) {
             counter=0;
@@ -137,7 +138,8 @@ $(".green").click(() => {
             getUserSequence(++counter);
     }
     else {
-        audioWrong.play();
+        var audio = new Audio("sounds/wrong.mp3");
+        audio.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
@@ -149,7 +151,8 @@ $(".yellow").click(() => {
 
     //choose that the button is right or wrong in the sequence
     if (stateYellow === 1) {
-        audioYellow.play();
+        var audio = new Audio("sounds/yellow.mp3");
+        audio.play();
         stateYellow = 0;
         if (counter == sequence.length - 1) {
             counter=0;
@@ -160,7 +163,8 @@ $(".yellow").click(() => {
             getUserSequence(++counter);
     }
     else {
-        audioWrong.play();
+        var audio = new Audio("sounds/wrong.mp3");
+        audio.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
