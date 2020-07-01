@@ -1,8 +1,14 @@
-var buttons = ["blue", "red", "green", "yellow"];
+var buttons = [ "green","red", "blue", "yellow"];
 var level = 0;
 var sequence = [];
 var stateGreen = 0, stateRed = 0, stateYellow = 0, stateBlue = 0;
 var counter;
+var audioGreen=new Audio("sounds/green.mp3");
+var audioRed=new Audio("sounds/red.mp3");
+var audioBlue=new Audio("sounds/blue.mp3");
+var audioYellow=new Audio("sounds/yellow.mp3");
+var audioWrong=new Audio("sounds/wrong.mp3");
+var audios=[audioGreen,audioRed,audioBlue,audioYellow];
 $(document).keydown((event) => {
     //only if level is 0 then start a new game
     if (level === 0) {
@@ -33,8 +39,7 @@ function generateSequence() {
 
     setTimeout(()=>{
         //play its sound
-    var audio = new Audio("sounds/" + buttons[choose] + ".mp3");
-    audio.play();
+    audios[choose].play();
 
     //animation
     $("." + buttons[choose]).addClass("pressed");
@@ -71,9 +76,8 @@ function getUserSequence(counter) {
 $(".blue").click(() => {
 
     //choose that the button is right or wrong in the sequence
-    if (stateBlue === 1) {
-        var audio = new Audio("sounds/blue.mp3");
-        audio.play();
+    if (stateBlue === 1) 
+        audioBlue.play();
         stateBlue = 0;
         
         // if its last of the sequence than start the next level 
@@ -87,8 +91,7 @@ $(".blue").click(() => {
             getUserSequence(++counter);
     }
     else {
-        var audio = new Audio("sounds/wrong.mp3");
-        audio.play();
+        audioWrong.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
@@ -100,8 +103,7 @@ $(".red").click(() => {
 
     //choose that the button is right or wrong in the sequence
     if (stateRed === 1) {
-        var audio = new Audio("sounds/red.mp3");
-        audio.play();
+        audioRed.play();
         stateRed = 0;
         if (counter == sequence.length - 1) {
             counter=0;
@@ -112,8 +114,7 @@ $(".red").click(() => {
             getUserSequence(++counter);
     }
     else {
-        var audio = new Audio("sounds/wrong.mp3");
-        audio.play();
+        audioWrong.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
@@ -125,8 +126,7 @@ $(".green").click(() => {
 
     //choose that the button is right or wrong in the sequence
     if (stateGreen === 1) {
-        var audio = new Audio("sounds/green.mp3");
-        audio.play();
+        audioGreen.play();
         stateGreen = 0;
         if (counter == sequence.length - 1) {
             counter=0;
@@ -137,8 +137,7 @@ $(".green").click(() => {
             getUserSequence(++counter);
     }
     else {
-        var audio = new Audio("sounds/wrong.mp3");
-        audio.play();
+        audioWrong.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
@@ -150,8 +149,7 @@ $(".yellow").click(() => {
 
     //choose that the button is right or wrong in the sequence
     if (stateYellow === 1) {
-        var audio = new Audio("sounds/yellow.mp3");
-        audio.play();
+        audioYellow.play();
         stateYellow = 0;
         if (counter == sequence.length - 1) {
             counter=0;
@@ -162,8 +160,7 @@ $(".yellow").click(() => {
             getUserSequence(++counter);
     }
     else {
-        var audio = new Audio("sounds/wrong.mp3");
-        audio.play();
+        audioWrong.play();
         $("body").addClass("game-over");
         sequence = [];
         $("h1").text("Game over! Press any key to restart");
